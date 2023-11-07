@@ -40,7 +40,7 @@ public class ManMapController {
 	protected ManlogService manlogService;
 
 	/**
-	 * 기관정보 main mapList Test
+	 * 기관정보 main mapList Test TEST TEST
 	 * 
 	 * @param ZipcodeVO
 	 * @param model
