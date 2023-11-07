@@ -38,7 +38,7 @@ import egovframework.plani.template.cmm.utils.MessageHelper;
 import egovframework.rte.fdl.property.EgovPropertyService;
 
 /**
- * 첨부파일 정보 컨트롤러;
+ * 첨부파일 정보 컨트롤러 Commiting Test
  * 
  * @class : [PLANI_TMPL] [egovframework.plani.atchfile.web] [AtchfileController.java]
  * @author : byunghanhan@PLANI
