@@ -17,6 +17,7 @@
 		<input type="hidden" name="seq" id="seq" value="${seq}"/>
 		<div class="group">
 			<h2>[사용자]-[자료실] 하위 게시판들은 다운로드 시 <br />개인/기관 확인 후 다운로드 진행 <br />기관명 필수 개인은 별도 정보 수집 없음</h2>
+			<h4 style="text-align: center;">※기관명 입력 시 특수문자 사용 불가※</h4>
 			<div class="item">
 				<div class="table-wrap">
 					<table>
@@ -30,11 +31,11 @@
 							<tr>
 								<td class="txt-left">
 									<span class="form-set form-radio">
-										<input type="radio" name="company_type" checked id="type1" value="2" />
+										<input type="radio" name="company_type" checked id="type1" value="2" onchange="clearInput()" />
 										<label for="type1">기관</label>
 									</span>
 									<span class="form-set form-radio">
-										<input type="radio" name="company_type" id="type2" value="3" />
+										<input type="radio" name="company_type" id="type2" value="3" onchange="clearInput()" />
 										<label for="type2">개인</label>
 									</span>
 								</td>
@@ -42,7 +43,7 @@
 							<tr>
 								<td class="txt-left">
 									<label for="name" class="hidden-text">기관명</label>
-									<input type="text" name="name" id="name" title="기관명" placeholder="기관명">
+									<input type="text" name="name" id="name" title="기관명" placeholder="기관명" onkeypress="allowOnlyKoEn(event)" onpaste="return false;">
 								</td>
 							</tr>
 						</tbody>
@@ -61,6 +62,20 @@
 </article>
 	<!-- //다운로드 팝업 -->
 <script>
+
+function clearInput() {
+	  var radio = document.querySelector('input[name="company_type"]:checked');
+	  var nameInput = document.getElementById('name');
+
+	  if (radio.value === '2') {
+	    nameInput.value = ''; 
+	    nameInput.disabled = false;
+	  } else {
+	    nameInput.disabled = false;
+	    nameInput.value = '개인';
+	  }
+	}
+
 $('input[name=company_type]').click(function()
 {
 	if($(this).val() == 3) {
@@ -71,9 +86,11 @@ $('input[name=company_type]').click(function()
 		$("#name").show();
 	}
 });
-;jQuery(document).ready(function($)
+
+jQuery(document).ready(function($)
 {
 	$('form.pdown-submit').submit(function() {
+		
 		$.ajax({
 	        url 		: g_context+"/widgets/pdownload.do",
 	        type  		: "post",
@@ -96,6 +113,7 @@ $('input[name=company_type]').click(function()
 		
 		return false;
 	});
+
 	
 	$('.layerpopup').find('.close').on('click', function()
 	{

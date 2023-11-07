@@ -1,5 +1,7 @@
 package egovframework.plani.custom.man.company.vo;
 
+import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import egovframework.plani.template.cmm.vo.DefaultSearchVO;
 
@@ -25,6 +27,7 @@ public class CompanyVO extends DefaultSearchVO {
 
   
   @NotEmpty(message = "기관명을 입력해주세요.")
+  @Pattern(regexp = "^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z]*$", message = "한글 또는 영어만 입력 가능합니다.")
   private String name;
 
   private String wdt;
