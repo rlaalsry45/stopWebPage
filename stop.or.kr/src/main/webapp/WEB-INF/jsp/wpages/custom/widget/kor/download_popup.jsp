@@ -7,7 +7,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
-	<!-- 다운로드 팝업 -->
+	<!-- 다운로드 팝업 231108-->
 	<article class="layerpopup type1" id="downlode">
 		<form name="download_popup" class="pdown-submit" method="post">
 	
