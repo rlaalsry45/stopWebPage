@@ -64,10 +64,10 @@
 	</a>
 	<p>
 	<span><a href="${pageContext.request.contextPath}/modedg/contentsView.do?ucont_id=CTX000056&srch_menu_nix=Ak20GP4Z" style="color:#ffff00; text-decoration: underline;">개인정보처리방침</a></span>
-	<span><a href="${pageContext.request.contextPath}/modedg/contentsView.do?ucont_id=CTX000136&srch_menu_nix=9e67SjA6" style="color:#ffff00;">영상정보처리기기</a></span>
-	<span><a href="${pageContext.request.contextPath}/newsletter/newsletterForm.do" style="color:#ffff00;" target="_blank" title="새창열림">뉴스레터 신청</a></span>
-	<span><a href="${pageContext.request.contextPath}/modedg/contentsView.do?ucont_id=CTX000129&srch_menu_nix=a771X5EL" style="color:#ffff00;" target="_blank" title="새창열림">저작권정책</a></span>
-	<span><a href="${pageContext.request.contextPath}/brdfaq/boardfaqList.do?brd_id=BDIDX_2052vSKNl9W13r2V1FhfEm&srch_menu_nix=jKvk3h4P&selecttype=VIEW" style="color:#ffff00;">자주묻는질문</a></span></p>
+	<span><a href="${pageContext.request.contextPath}/modedg/contentsView.do?ucont_id=CTX000136&srch_menu_nix=9e67SjA6" style="color:#FFFFFF;">영상정보처리기기</a></span>
+	<span><a href="${pageContext.request.contextPath}/newsletter/newsletterForm.do" style="color:#FFFFFF;" target="_blank" title="새창열림">뉴스레터 신청</a></span>
+	<span><a href="${pageContext.request.contextPath}/modedg/contentsView.do?ucont_id=CTX000129&srch_menu_nix=a771X5EL" style="color:#FFFFFF;" target="_blank" title="새창열림">저작권정책</a></span>
+	<span><a href="${pageContext.request.contextPath}/brdfaq/boardfaqList.do?brd_id=BDIDX_2052vSKNl9W13r2V1FhfEm&srch_menu_nix=jKvk3h4P&selecttype=VIEW" style="color:#FFFFFF;">자주묻는질문</a></span></p>
 	
 	<address>서울특별시 중구 서소문로 50 센트럴플레이스 3층 (04505) </address>
 	<span>TEL 02-735-1050</span>
