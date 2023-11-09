@@ -43,7 +43,7 @@
 							<tr>
 								<td class="txt-left">
 									<label for="name" class="hidden-text">기관명</label>
-									<input type="text" name="name" id="name" title="기관명" placeholder="기관명" onkeypress="allowOnlyKoEn(event)" onpaste="return false;">
+									<input type="text" name="name" id="name" title="기관명" placeholder="기관명" onkeypress="allowOnlyKoEn(event)" onpaste="return false;" autocomplete='off'>
 								</td>
 							</tr>
 						</tbody>
