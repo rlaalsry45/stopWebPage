@@ -107,7 +107,7 @@
 	<update id="updateSyscodeOrderM" parameterType="syscodeVO">
 
 		UPDATE CMS_SYS_CODE SET
-			CODE_ORD = CODE_ORD + (${add_ord})
+			CODE_ORD = CODE_ORD + (#{add_ord})
 		WHERE
 			(
 				UP_CODE_IDX
@@ -185,7 +185,7 @@
 					UP_CODE_IDX = #{up_code_idx}
 				</if>
 				<if test="except_codes != null and except_codes != ''">AND
-					CODE_IDX NOT IN (${except_codes})
+					CODE_IDX NOT IN (#{except_codes})
 				</if>
 			
 			

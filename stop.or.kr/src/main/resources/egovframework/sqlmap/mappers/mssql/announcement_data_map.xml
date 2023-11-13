@@ -24,7 +24,7 @@
 				GROUP_ID=#{group_id} AND IS_NOTICE='N'
 				<if test="searchCondition != null and searchCondition != '' and searchKeyword != null and searchKeyword != ''">
 					<if test="searchCondition == 'SUBJECT' || searchCondition == 'CONTENT'">
-						AND ${searchCondition} LIKE '%' + #{searchKeyword} + '%'
+						AND #{searchCondition} LIKE '%' + #{searchKeyword} + '%'
 					</if>
 				</if>
 		) TB ) MORG   WHERE rn BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordCountPerPage}
@@ -55,7 +55,7 @@
 				GROUP_ID=#{group_id} AND IS_NOTICE='N'
 				<if test="searchCondition != null and searchCondition != '' and searchKeyword != null and searchKeyword != ''">
 					<if test="searchCondition == 'SUBJECT' || searchCondition == 'CONTENT'">
-						AND ${searchCondition} LIKE '%' + #{searchKeyword} + '%'
+						AND #{searchCondition} LIKE '%' + #{searchKeyword} + '%'
 					</if>
 				</if>
 			) INNB

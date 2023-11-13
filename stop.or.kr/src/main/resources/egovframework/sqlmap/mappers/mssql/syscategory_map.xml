@@ -108,7 +108,7 @@
 	<update id="updateSyscategoryOrderM" parameterType="syscategoryVO">
 
 		UPDATE CMS_SYS_CTGRY SET
-			CTGRY_ORD = CTGRY_ORD + (${add_ord})
+			CTGRY_ORD = CTGRY_ORD + (#{add_ord})
 		WHERE
 			(
 				UP_CTGRY_IDX

@@ -6,7 +6,7 @@
 	<sql id="incSelectWhere">
 		<if test="searchCondition != null and searchCondition != ''">
 			<if test="searchKeyword != null and searchKeyword != ''">
-				AND ${searchCondition} like '%${searchKeyword}%'
+				AND #{searchCondition} like '%#{searchKeyword}%'
 			</if>
 		</if>
 		<if test="searchPopType != null and searchPopType != ''">

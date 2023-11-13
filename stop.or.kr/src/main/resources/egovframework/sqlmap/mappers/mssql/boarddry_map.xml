@@ -7,12 +7,12 @@
 
 		<selectKey resultType="java.lang.Integer" keyProperty="cont_idx" order="BEFORE">
 		
-			SELECT ISNULL(MAX(CONT_IDX) + 1, 1) AS CONT_IDX FROM ${tbl_nm} WHERE
+			SELECT ISNULL(MAX(CONT_IDX) + 1, 1) AS CONT_IDX FROM #{tbl_nm} WHERE
 				BRD_ID = #{brd_id}
 		
 		</selectKey>
 		
-		INSERT INTO ${tbl_nm}
+		INSERT INTO #{tbl_nm}
 		(
 			BRD_ID,
 			CONT_IDX,
@@ -47,7 +47,7 @@
 	
 	<update id="updateBoarddry" parameterType="boarddryVO">
 
-		UPDATE ${tbl_nm} SET
+		UPDATE #{tbl_nm} SET
 			SUBJECT = #{subject},
 			BRD_CONT = #{brd_cont},
 			REPEAT_YN = #{repeat_yn},
@@ -70,7 +70,7 @@
 	
 	<delete id="deleteBoarddry" parameterType="boarddryVO">
 
-		DELETE FROM ${tbl_nm}
+		DELETE FROM #{tbl_nm}
 		WHERE
 			BRD_ID = #{brd_id} AND
 		<if test="reference_key == null or reference_key == ''">
@@ -99,7 +99,7 @@
 			MODIFIER,
 			CONVERT(VARCHAR(19), MDT, 20) MDT
 		FROM
-			${tbl_nm}
+			#{tbl_nm}
 		WHERE
 			BRD_ID = #{brd_id} AND
 			CONT_IDX = #{cont_idx}
@@ -126,7 +126,7 @@
 				MODIFIER,
 				CONVERT(VARCHAR(19), MDT, 20) MDT
 			FROM
-				${tbl_nm}
+				#{tbl_nm}
 			WHERE
 				BRD_ID = #{brd_id} 
 				<if test="startdt != null and startdt != ''">AND
@@ -149,7 +149,7 @@
 		SELECT
 			COUNT(*) AS TOTCNT
 		FROM
-			${tbl_nm}
+			#{tbl_nm}
 		WHERE
 			BRD_ID = #{brd_id}
 			<if test="startdt != null and startdt != ''">AND
@@ -182,7 +182,7 @@
 				MODIFIER,
 				CONVERT(VARCHAR(19), MDT, 20) MDT
 			FROM
-				${tbl_nm}
+				#{tbl_nm}
 			WHERE
 				BRD_ID = #{brd_id} AND
 				CONT_IDX = #{cont_idx}
@@ -212,7 +212,7 @@
 				MODIFIER,
 				CONVERT(VARCHAR(19), MDT, 20) MDT
 			FROM
-				${tbl_nm}
+				#{tbl_nm}
 			WHERE
 				BRD_ID = #{brd_id} 
 				<if test="startdt != null and startdt != ''">AND

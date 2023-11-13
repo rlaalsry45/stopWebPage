@@ -101,7 +101,7 @@
 	<update id="updateSysauthOrderM" parameterType="sysauthVO">
 
 		UPDATE CMS_SYS_AUTH SET
-			AUTH_ORD = AUTH_ORD + (${add_ord})
+			AUTH_ORD = AUTH_ORD + (#{add_ord})
 		WHERE
 			(
 				UP_AUTH_CD

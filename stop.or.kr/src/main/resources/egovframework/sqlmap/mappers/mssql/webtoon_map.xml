@@ -45,7 +45,7 @@
 						AND A.CN_TITLE LIKE '%' + #{searchKeyword} + '%'
 				</if>
 				<if test="searchCondition != null and searchCondition != ''">
-						AND A.CATEGORY = ${searchCondition}
+						AND A.CATEGORY = #{searchCondition}
 				</if>
 						
 					
@@ -131,7 +131,7 @@
 				AND CN_TITLE LIKE '%' + #{searchKeyword} + '%'
 			</if>
 			<if test="searchCondition != null and searchCondition != ''">
-				AND CATEGORY = ${searchCondition}
+				AND CATEGORY = #{searchCondition}
 			</if>
 			
 	</select>

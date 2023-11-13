@@ -311,7 +311,7 @@
 									( UCONT_SUBJECT LIKE '%' + #{searchKeyword} + '%' OR UCONT_CONT LIKE '%' + #{searchKeyword} + '%' )
 								</if>
 								<if test="searchCondition != 'SC_ALL'.toString()">
-									${searchCondition} LIKE '%' + #{searchKeyword} + '%'
+									#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
 								</if>
 							</if>
 					) INNA
@@ -433,7 +433,7 @@
 								( UCONT_SUBJECT LIKE '%' + #{searchKeyword} + '%' OR UCONT_CONT LIKE '%' + #{searchKeyword} + '%' )
 							</if>
 							<if test="searchCondition != 'SC_ALL'.toString()">
-								${searchCondition} LIKE '%' + #{searchKeyword} + '%'
+								#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
 							</if>
 						</if>
 				) INNA
@@ -482,7 +482,7 @@
 			FROM
 				CMS_USR_CONTENTS 
 			WHERE			
-				REF_MENU_NIX IN (${searchQuery})
+				REF_MENU_NIX IN (#{searchQuery})
 			
 			
 		) TB ) MORG   
@@ -540,7 +540,7 @@
 									( UCONT_SUBJECT LIKE '%' + #{searchKeyword} + '%' OR UCONT_CONT LIKE '%' + #{searchKeyword} + '%' )
 								</if>
 								<if test="searchCondition != 'SC_ALL'.toString()">
-									${searchCondition} LIKE '%' + #{searchKeyword} + '%'
+									#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
 								</if>
 							</if>
 					) INNA

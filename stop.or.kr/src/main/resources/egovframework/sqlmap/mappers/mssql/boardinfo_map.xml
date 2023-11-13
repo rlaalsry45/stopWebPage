@@ -295,7 +295,7 @@
 	
 	<insert id="createBoardTable" parameterType="boardinfoVO">
 		<if test="brd_gb == 'CDIDX00044'.toString()">
-			CREATE TABLE ${tbl_nm} (
+			CREATE TABLE #{tbl_nm} (
 				BRD_ID         VARCHAR(32 BYTE)      NOT NULL, 
 				CONT_IDX       INT                 NOT NULL, 
 				SUBJECT        VARCHAR(512 BYTE)         NULL, 
@@ -308,12 +308,12 @@
 				WDT            DATE                       NULL, 
 				MODIFIER       VARCHAR(24 BYTE)          NULL, 
 				MDT            DATE                       NULL, 
-			    CONSTRAINT PK_${tbl_nm}
+			    CONSTRAINT PK_#{tbl_nm}
 			    PRIMARY KEY ( BRD_ID, CONT_IDX )
 			)
 		</if>
 		<if test="brd_gb == 'CDIDX00045'.toString()">
-			CREATE TABLE ${tbl_nm} (
+			CREATE TABLE #{tbl_nm} (
 				BRD_ID        VARCHAR(32 BYTE)       NOT NULL, 
 				CONT_IDX      INT                  NOT NULL, 
 				SUBJECT       VARCHAR(512 BYTE)          NULL, 
@@ -327,12 +327,12 @@
 				WDT           DATE                        NULL, 
 				MODIFIER      VARCHAR(24 BYTE)           NULL, 
 				MDT           DATE                        NULL, 
-			    CONSTRAINT PK_${tbl_nm}
+			    CONSTRAINT PK_#{tbl_nm}
 				PRIMARY KEY ( BRD_ID, CONT_IDX )
 			)
 		</if>
 		<if test="brd_gb == 'CDIDX00042'.toString()">
-			CREATE TABLE ${tbl_nm} (
+			CREATE TABLE #{tbl_nm} (
 				  BRD_ID       VARCHAR(32 BYTE)      NOT NULL, 
 				  CONT_IDX     INT                 NOT NULL, 
 				  CTGRY_IDX    VARCHAR(16 BYTE)          NULL, 
@@ -349,12 +349,12 @@
 				  WDT          DATE                       NULL, 
 				  MODIFIER     VARCHAR(24 BYTE)          NULL, 
 				  MDT          DATE                       NULL, 
-				  CONSTRAINT PK_${tbl_nm}
+				  CONSTRAINT PK_#{tbl_nm}
 				  PRIMARY KEY ( BRD_ID, CONT_IDX )
 			)
 		</if>
 		<if test="brd_gb == 'CDIDX00043'.toString()">
-			CREATE TABLE ${tbl_nm} (
+			CREATE TABLE #{tbl_nm} (
 			  	BRD_ID       VARCHAR(32)       NOT NULL, 
 			  	CONT_IDX     INT             NOT NULL, 
 			  	CTGRY_IDX    VARCHAR(16)           NULL, 
@@ -366,7 +366,7 @@
 			  	MODIFIER     VARCHAR(24)           NULL, 
 			  	MDT          DATE                   NULL, 
 			  	KOGL         VARCHAR(16)           NULL, 
-			    CONSTRAINT PK_${tbl_nm}
+			    CONSTRAINT PK_#{tbl_nm}
 			    PRIMARY KEY ( BRD_ID, CONT_IDX )
 			)
 		</if>

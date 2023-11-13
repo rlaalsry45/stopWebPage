@@ -75,7 +75,7 @@
 				DATA.GROUP_ID=#{group_id} AND DATA.IS_NOTICE='N'
 				<if test="searchCondition != null and searchCondition != '' and searchKeyword != null and searchKeyword != ''">
 					<if test="searchCondition == 'SUBJECT' || searchCondition == 'CONTENT'">
-						AND DATA.${searchCondition} LIKE '%' + #{searchKeyword} + '%'
+						AND DATA.#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
 					</if>
 				</if>
 				
@@ -108,7 +108,7 @@
 				GROUP_ID=#{group_id} AND IS_NOTICE='N'
 				<if test="searchCondition != null and searchCondition != '' and searchKeyword != null and searchKeyword != ''">
 					<if test="searchCondition == 'SUBJECT' || searchCondition == 'CONTENT'">
-						AND ${searchCondition} LIKE '%' + #{searchKeyword} + '%'
+						AND #{searchCondition} LIKE '%' + #{searchKeyword} + '%'
 					</if>
 				</if>
 			) INNB

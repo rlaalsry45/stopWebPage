@@ -38,17 +38,17 @@
 		</if>
 		<if test="searchType == '1'.toString()">
 			<if test="searchKeyword != null and searchKeyword != ''">
-				AND PBD_REQ_TITLE LIKE  '%${searchKeyword}%'
+				AND PBD_REQ_TITLE LIKE  '%#{searchKeyword}%'
 			</if>
 		</if>
 		<if test="searchType == '2'.toString()">
 			<if test="searchKeyword != null and searchKeyword != ''">
-				AND PBD_REQ_CONTENT LIKE  '%${searchKeyword}%'
+				AND PBD_REQ_CONTENT LIKE  '%#{searchKeyword}%'
 			</if>
 		</if>
 		<if test="searchType == '3'.toString()">
 			<if test="searchKeyword != null and searchKeyword != ''">
-				AND (PBD_REQ_CONTENT LIKE  '%${searchKeyword}%' OR PBD_REQ_TITLE LIKE  '%${searchKeyword}%')
+				AND (PBD_REQ_CONTENT LIKE  '%#{searchKeyword}%' OR PBD_REQ_TITLE LIKE  '%#{searchKeyword}%')
 			</if>
 		</if>
 	</sql>
