@@ -53,7 +53,7 @@ import egovframework.rte.fdl.property.EgovPropertyService;
  * @class : [PLANI_TMPL] [egovframework.plani.brdartcl.web] [BoardarticleController.java]
  * @author : byunghanhan@PLANI
  * @date : 2013. 5. 15. 오후 5:57:50
- * @version : 1.0
+ * @version : 1.0 수정수정
  */
 @Controller
 @RequestMapping("/brdanm")

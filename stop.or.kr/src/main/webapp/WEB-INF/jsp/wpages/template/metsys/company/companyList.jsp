@@ -58,7 +58,9 @@
 		var nowMonth = nowDate.getMonth()+1;
 		var nowDay = nowDate.getDate();
 		
-		if(nowDay.lenght != 2){
+		console.log(nowDay);
+		
+		if(nowDay < 10){
 			nowDay = "0"+nowDay;			
 		}
 		
@@ -93,7 +95,7 @@
 <br/>
 <br/>
 <br/>
-<form id="companyVO" name="reqForm" action="/mancompany/xlsCompanyList.do" method="post">
+<form id="companyVO" name="reqForm" action="/mancompany/xlsCompanyList.do?srch_menu_nix=${param.srch_menu_nix}" method="post">
 
 
 <table class="tstyle_view">
@@ -155,5 +157,7 @@
 				</tbody>
 				</table>
 				
-<input type = "hidden" id = "srch_menu_nix" name = "srch_menu_nix" value= "${param.srch_menu_nix}"/>
+				<input type="hidden" value = "${param.srch_menu_nix}" name = "srch_menu_nix" id = "srch_menu_nix"/>
+				
+				
 </form>

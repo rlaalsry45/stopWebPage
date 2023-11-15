@@ -20,12 +20,12 @@
 		)
 		VALUES
 		(
-			#{com_idx},
-			#{div},
-			#{name},
+			${com_idx},
+			${div},
+			${name},
 			GETDATE(),
-			#{vchkcode},
-			#{seq}
+			${vchkcode},
+			${seq}
 		)
 
 	</insert>

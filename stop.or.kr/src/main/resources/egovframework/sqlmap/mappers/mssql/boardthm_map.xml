@@ -31,12 +31,12 @@
 
 		<selectKey resultType="java.lang.Integer" keyProperty="cont_idx" order="BEFORE">
 		
-			SELECT ISNULL(MAX(CONT_IDX) + 1, 1) AS CONT_IDX FROM #{tbl_nm} WHERE
+			SELECT ISNULL(MAX(CONT_IDX) + 1, 1) AS CONT_IDX FROM ${tbl_nm} WHERE
 				BRD_ID = #{brd_id}
 		
 		</selectKey>
 
-		INSERT INTO #{tbl_nm}
+		INSERT INTO ${tbl_nm}
 		(
 			BRD_ID,
 			CONT_IDX,
@@ -73,7 +73,7 @@
 	
 	<update id="updateBoardthm" parameterType="boardthmVO">
 
-		UPDATE #{tbl_nm} SET
+		UPDATE ${tbl_nm} SET
 			<if test="subject != null and subject != ''">
 				CTGRY_IDX = #{ctgry_idx},
 				SUBJECT = #{subject},
@@ -99,7 +99,7 @@
 	
 	
 	<update id="updateBoardxcount" parameterType="boardthmVO" >
-		UPDATE #{tbl_nm} SET
+		UPDATE ${tbl_nm} SET
 			<if test="hits != '0'.toString()">
 				HITS = #{hits},
 			</if>
@@ -111,7 +111,7 @@
 	
 	<delete id="deleteBoardthm" parameterType="boardthmVO">
 
-		DELETE FROM #{tbl_nm}
+		DELETE FROM ${tbl_nm}
 		WHERE
 			BRD_ID = #{brd_id} AND
 			CONT_IDX = #{cont_idx}
@@ -135,9 +135,9 @@
 			EXTRA2,
 			IS_NOTICE,
 			PRE_ATCL,
-			(SELECT SUBJECT FROM #{tbl_nm} WHERE CONT_IDX = A.PRE_ATCL AND BRD_ID = #{brd_id}) PRE_SUBJ,
+			(SELECT SUBJECT FROM ${tbl_nm} WHERE CONT_IDX = A.PRE_ATCL AND BRD_ID = #{brd_id}) PRE_SUBJ,
 			NEXT_ATCL,
-			(SELECT SUBJECT FROM #{tbl_nm} WHERE CONT_IDX = A.NEXT_ATCL AND BRD_ID = #{brd_id}) NEXT_SUBJ,
+			(SELECT SUBJECT FROM ${tbl_nm} WHERE CONT_IDX = A.NEXT_ATCL AND BRD_ID = #{brd_id}) NEXT_SUBJ,
 			A.WRITER,
 			CONVERT(VARCHAR(10), A.WDT, 20) WDT,
 			A.MODIFIER,
@@ -152,7 +152,7 @@
 			    	dbo.SF_BRD_SIBL_ARTCL('PREV', BRD_ID, CONT_IDX, IS_NOTICE, #{srch_ctgry_idx}) PRE_ATCL,
 			    	dbo.SF_BRD_SIBL_ARTCL('NEXT', BRD_ID, CONT_IDX, IS_NOTICE, #{srch_ctgry_idx}) NEXT_ATCL
 			    FROM 
-			    	#{tbl_nm} X
+			    	${tbl_nm} X
 				WHERE
 					BRD_ID = #{brd_id} AND
 					CONT_IDX = #{cont_idx}	
@@ -201,10 +201,10 @@
 				NEXT_ATCL,
 				NEXT_SUBJ,
 				<if test="reply_gb == 'R'.toString()">
-                	(SELECT COUNT(*) FROM #{reply_tbl_nm} WHERE BRD_ID = A.BRD_ID AND CONT_IDX = A.CONT_IDX) REPLY_CNT,
+                	(SELECT COUNT(*) FROM ${reply_tbl_nm} WHERE BRD_ID = A.BRD_ID AND CONT_IDX = A.CONT_IDX) REPLY_CNT,
                 </if>        
                 <if test="reply_gb == 'B'.toString()">
-                	(SELECT COUNT(*) FROM #{reply_tbl_nm} WHERE BRD_ID = A.BRD_ID AND CONT_IDX = A.CONT_IDX) REPLY_CNT,
+                	(SELECT COUNT(*) FROM ${reply_tbl_nm} WHERE BRD_ID = A.BRD_ID AND CONT_IDX = A.CONT_IDX) REPLY_CNT,
                 </if>
                 <if test="reply_gb == 'A'.toString()">
                  	0 REPLY_CNT,
@@ -227,7 +227,7 @@
 				    	LEAD(CONT_IDX, 1, NULL) OVER (ORDER BY CONT_IDX) NEXT_ATCL,
 				    	LEAD(SUBJECT, 1, NULL) OVER (ORDER BY CONT_IDX) NEXT_SUBJ
 				    FROM 
-				    	#{tbl_nm} X
+				    	${tbl_nm} X
 				    WHERE
 				    	BRD_ID = #{brd_id} 
 				)  A 
@@ -239,7 +239,7 @@
 							( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 						</if>
 						<if test="searchCondition != 'SC_ALL'.toString()">
-							#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+							${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 						</if>
 					</if>
 				</if>
@@ -262,7 +262,7 @@
 					A.*,
 					dbo.SF_USER_NM(WRITER) WRITER_NM 
 				FROM
-					#{tbl_nm} A
+					${tbl_nm} A
 			) A
 		WHERE
 			BRD_ID = #{brd_id} 
@@ -272,7 +272,7 @@
 						( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 					</if>
 					<if test="searchCondition != 'SC_ALL'.toString()">
-						#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+						${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 					</if>
 				</if>	
 			</if>		
@@ -285,4 +285,3 @@
 	
 
 </mapper>
-

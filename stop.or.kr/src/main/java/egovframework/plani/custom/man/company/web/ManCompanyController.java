@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import egovframework.plani.custom.man.company.service.CompanyService;
 import egovframework.plani.custom.man.company.vo.CompanyVO;
@@ -73,7 +74,7 @@ public class ManCompanyController {
 	 * @param model
 	 * @exception Exception
 	 */
-	@RequestMapping("/xlsCompanyList")
+	@RequestMapping(value = "/xlsCompanyList")
 	public void xlsCompanyList(
 								@ModelAttribute("companyVO") CompanyVO companyVO, 
 								HttpServletRequest request, 
