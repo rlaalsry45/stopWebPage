@@ -7,12 +7,12 @@
 		
 		<selectKey resultType="java.lang.Integer" keyProperty="cont_idx" order="BEFORE">
 		
-			SELECT ISNULL(MAX(CONT_IDX) + 1, 1) AS CONT_IDX FROM #{tbl_nm} WHERE
+			SELECT ISNULL(MAX(CONT_IDX) + 1, 1) AS CONT_IDX FROM ${tbl_nm} WHERE
 				BRD_ID = #{brd_id}
 		
 		</selectKey>
 		
-		INSERT INTO #{tbl_nm}
+		INSERT INTO ${tbl_nm}
 		(
 			BRD_ID,
 			CONT_IDX,
@@ -41,7 +41,7 @@
 		
 	<update id="updateBoardfaq" parameterType="boardfaqVO">
 		
-		UPDATE #{tbl_nm} SET
+		UPDATE ${tbl_nm} SET
 			<if test="subject != null and subject != ''">
 				CTGRY_IDX = #{ctgry_idx},
 				SUBJECT = #{subject},
@@ -57,7 +57,7 @@
 	</update>
 	
 	<update id="updateBoardxcount" parameterType="boardfaqVO" >
-		UPDATE #{tbl_nm} SET
+		UPDATE ${tbl_nm} SET
 			HITS = HITS + 1,
 			MDT = MDT
 		WHERE
@@ -69,7 +69,7 @@
 	<delete id="deleteBoardfaq" parameterType="boardfaqVO">
 	
 		DELETE FROM
-			#{tbl_nm}
+			${tbl_nm}
 		WHERE
 			BRD_ID = #{brd_id} AND
 			CONT_IDX = #{cont_idx}	
@@ -106,7 +106,7 @@
 			    	LEAD(CONT_IDX, 1, NULL) OVER (ORDER BY CONT_IDX) NEXT_ATCL,
 			    	LEAD(SUBJECT, 1, NULL) OVER (ORDER BY CONT_IDX) NEXT_SUBJ
 			      FROM
-			  	  	#{tbl_nm} Y
+			  	  	${tbl_nm} Y
 			    	WHERE
 				    	BRD_ID = #{brd_id}
 			) A
@@ -136,7 +136,7 @@
 					ISNULL(dbo.SF_USER_NM(WRITER), 'GUEST') WRITER_NM,
 					ROUND(DATEDIFF(DD,A.WDT,GETDATE()),0) DFR_WDT
 				FROM
-			        #{tbl_nm} A
+			        ${tbl_nm} A
 				WHERE
 					BRD_ID = #{brd_id}
 					<if test = "selecttype == 'VIEW' and selecttype != null and selecttype != ''">
@@ -155,7 +155,7 @@
 								( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 							</if>
 							<if test="searchCondition != 'SC_ALL'.toString()">
-								#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+								${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 							</if>
 						</if>
 					</if>
@@ -186,7 +186,7 @@
 				ISNULL(dbo.SF_USER_NM(WRITER), 'GUEST') WRITER_NM,
 				ROUND(DATEDIFF(DD,A.WDT,GETDATE()),0) DFR_WDT
 			FROM
-		        #{tbl_nm} A
+		        ${tbl_nm} A
 			WHERE
 				BRD_ID = #{brd_id} AND FAQ_TYPE = 'B'
 				<if test="searchKeyword != null and searchKeyword != ''">
@@ -196,7 +196,7 @@
 							( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 						</if>
 						<if test="searchCondition != 'SC_ALL'.toString()">
-							#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+							${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 						</if>
 					</if>
 				</if>
@@ -227,7 +227,7 @@
 				ISNULL(dbo.SF_USER_NM(WRITER), 'GUEST') WRITER_NM,
 				ROUND(DATEDIFF(DD,A.WDT,GETDATE()),0) DFR_WDT
 			FROM
-		        #{tbl_nm} A
+		        ${tbl_nm} A
 			WHERE
 				BRD_ID = #{brd_id} AND FAQ_TYPE = 'C'
 				<if test="searchKeyword != null and searchKeyword != ''">
@@ -237,7 +237,7 @@
 							( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 						</if>
 						<if test="searchCondition != 'SC_ALL'.toString()">
-							#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+							${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 						</if>
 					</if>
 				</if>
@@ -268,7 +268,7 @@
 				ISNULL(dbo.SF_USER_NM(WRITER), 'GUEST') WRITER_NM,
 				ROUND(DATEDIFF(DD,A.WDT,GETDATE()),0) DFR_WDT
 			FROM
-		        #{tbl_nm} A
+		        ${tbl_nm} A
 			WHERE
 				BRD_ID = #{brd_id} AND FAQ_TYPE = 'D'
 				<if test="searchKeyword != null and searchKeyword != ''">
@@ -278,7 +278,7 @@
 							( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 						</if>
 						<if test="searchCondition != 'SC_ALL'.toString()">
-							#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+							${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 						</if>
 					</if>
 				</if>
@@ -309,7 +309,7 @@
 				ISNULL(dbo.SF_USER_NM(WRITER), 'GUEST') WRITER_NM,
 				ROUND(DATEDIFF(DD,A.WDT,GETDATE()),0) DFR_WDT
 			FROM
-		        #{tbl_nm} A
+		        ${tbl_nm} A
 			WHERE
 				BRD_ID = #{brd_id} AND FAQ_TYPE = 'E'
 				<if test="searchKeyword != null and searchKeyword != ''">
@@ -319,7 +319,7 @@
 							( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 						</if>
 						<if test="searchCondition != 'SC_ALL'.toString()">
-							#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+							${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 						</if>
 					</if>
 				</if>
@@ -341,7 +341,7 @@
 					A.*,
 					dbo.SF_USER_NM(WRITER) WRITER_NM 
 				FROM
-					#{tbl_nm} A
+					${tbl_nm} A
 			) A
 		WHERE
 			BRD_ID = #{brd_id}
@@ -359,7 +359,7 @@
 					( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 				</if>
 				<if test="searchCondition != 'SC_ALL'.toString()">
-					#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+					${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 				</if>
 			</if>			
 			<if test="ctgry_idx != null and ctgry_idx != ''">AND
@@ -378,7 +378,7 @@
 					A.*,
 					dbo.SF_USER_NM(WRITER) WRITER_NM 
 				FROM
-					#{tbl_nm} A
+					${tbl_nm} A
 			) A
 		WHERE
 			BRD_ID = #{brd_id} AND FAQ_TYPE = 'B'
@@ -387,7 +387,7 @@
 					( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 				</if>
 				<if test="searchCondition != 'SC_ALL'.toString()">
-					#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+					${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 				</if>
 			</if>			
 			<if test="ctgry_idx != null and ctgry_idx != ''">AND
@@ -406,7 +406,7 @@
 					A.*,
 					dbo.SF_USER_NM(WRITER) WRITER_NM 
 				FROM
-					#{tbl_nm} A
+					${tbl_nm} A
 			) A
 		WHERE
 			BRD_ID = #{brd_id} AND FAQ_TYPE = 'C'
@@ -415,7 +415,7 @@
 					( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 				</if>
 				<if test="searchCondition != 'SC_ALL'.toString()">
-					#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+					${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 				</if>
 			</if>			
 			<if test="ctgry_idx != null and ctgry_idx != ''">AND
@@ -434,7 +434,7 @@
 					A.*,
 					dbo.SF_USER_NM(WRITER) WRITER_NM 
 				FROM
-					#{tbl_nm} A
+					${tbl_nm} A
 			) A
 		WHERE
 			BRD_ID = #{brd_id} AND FAQ_TYPE = 'D'
@@ -443,7 +443,7 @@
 					( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 				</if>
 				<if test="searchCondition != 'SC_ALL'.toString()">
-					#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+					${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 				</if>
 			</if>			
 			<if test="ctgry_idx != null and ctgry_idx != ''">AND
@@ -462,7 +462,7 @@
 					A.*,
 					dbo.SF_USER_NM(WRITER) WRITER_NM 
 				FROM
-					#{tbl_nm} A
+					${tbl_nm} A
 			) A
 		WHERE
 			BRD_ID = #{brd_id} AND FAQ_TYPE = 'E'
@@ -471,7 +471,7 @@
 					( SUBJECT LIKE '%' + #{searchKeyword} + '%' OR BRD_CONT LIKE '%' + #{searchKeyword} + '%' )
 				</if>
 				<if test="searchCondition != 'SC_ALL'.toString()">
-					#{searchCondition} LIKE '%' + #{searchKeyword} + '%'
+					${searchCondition} LIKE '%' + #{searchKeyword} + '%'
 				</if>
 			</if>			
 			<if test="ctgry_idx != null and ctgry_idx != ''">AND
@@ -481,4 +481,3 @@
 	</select>
 
 </mapper>
-
