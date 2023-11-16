@@ -57,7 +57,11 @@
 		String today = formatter.format(new java.util.Date());
 		realFileNm = today + UUID.randomUUID().toString()
 				+ filename.substring(filename.lastIndexOf("."));
-		String rlFileNm = filePath + realFileNm;
+		String rlFileNm = filePath + realFileNm; //읽어오는 파일명
+		
+		//수정부
+		rlFileNm = rlFileNm.replaceAll("\\.", "").replaceAll("/", "").replaceAll("\\\\", "");
+		
 		///////////////// 서버에 파일쓰기 ///////////////// 
 		InputStream is = request.getInputStream();
 		OutputStream os = new FileOutputStream(rlFileNm);
