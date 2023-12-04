@@ -5,7 +5,17 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<script>
 
+function characterCheck(obj){
+	var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; 
+	if( regExp.test(obj.value) ){
+		alert("특수문자는 입력하실수 없습니다.");
+		obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
+		}
+	}
+
+</script>
 
 	<!-- 다운로드 팝업 231108-->
 	<article class="layerpopup type1" id="downlode">
@@ -31,7 +41,7 @@
 							<tr>
 								<td class="txt-left">
 									<span class="form-set form-radio">
-										<input type="radio" name="company_type" checked id="type1" value="2" onchange="clearInput()" />
+										<input type="radio" name="company_type" checked id="type1" value="2" onchange="clearInput()"/>
 										<label for="type1">기관</label>
 									</span>
 									<span class="form-set form-radio">
@@ -43,7 +53,7 @@
 							<tr>
 								<td class="txt-left">
 									<label for="name" class="hidden-text">기관명</label>
-									<input type="text" name="name" id="name" title="기관명" placeholder="기관명" onkeypress="allowOnlyKoEn(event)" onpaste="return false;" autocomplete='off'>
+									<input type="text" name="name" id="name" title="기관명" placeholder="기관명" onkeypress="allowOnlyKoEn(event)" onpaste="return false;" autocomplete='off' onkeyup="characterCheck(this)" onkeydown="characterCheck(this)" >
 								</td>
 							</tr>
 						</tbody>
@@ -51,7 +61,9 @@
 				</div>
 							
 				<p class="btns txt-center">
-					<input type="submit" class="btn-m btn1" value="다운로드">
+				
+					<!--  <input type="submit" class="btn-m btn1" value="다운로드">-->
+					<a href="/atchfile/downloadAtchfile.do?vchkcode=${d_vchkcode}" class="btn-l btn1">다운로드</a>
 					<a href="#downlode" class="btn-m btn2 close">닫기</a>
 				<!-- 	<a href="" class="btn-l btn1">다운로드</a> -->
 				</p>
